@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Surfer Dude Pizza</title>
+  <script src="js/scripts.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>Surfer Dude Pizza</h1>
+  <h2>Order your pizza here!</h2>
+  <form id="pizza-form">
+    <label for="size">Size</label>
+    <select id="size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+    <label for="crust">Crust</label>
+    <select id="crust">
+      <option value="thin">Thin</option>
+      <option value="thick">Thick</option>
+      <option value="gluten-free">Gluten Free</option>
+    </select>
+    <label for="toppings">Toppings</label>
+    <select id="toppings">
+      <option value="pepperoni">Pepperoni</option>
+      <option value="sausage">Sausage</option>
+      <option value="bacon">Bacon</option>
+      <option value="pineapple">Pineapple</option>
+      <option value="mushrooms">Mushrooms</option>
+      <option value="onions">Onions</option>
+      <option value="olives">Olives</option>
+      <option value="extra-cheese">Extra Cheese</option>
+    </select>
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" min="1" max="10" value="1">
+    <button type="submit">Order</button>
+  </form>
+  <div id="order-summary">
+    <h2>Order Summary</h2>
+    <p id="order-size"></p>
+    <p id="order-crust"></p>
+    <p id="order-toppings"></p>
+    <p id="order-quantity"></p>
+    <p id="order-total"></p>
+  </div>
+</body>
+</html>
