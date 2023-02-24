@@ -66,3 +66,14 @@ button[type="submit"] {
 #order-summary p {
   margin-bottom: 10px;
 }
+
+#meats, #combos {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  box-sizing:border-box;
+  box-shadow: 0 0 5px #ccc;
+}

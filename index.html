@@ -21,25 +21,36 @@
       <option value="thick">Thick</option>
       <option value="gluten-free">Gluten Free</option>
     </select>
-    <label for="meats">Meats</label>
-    <select id="meats">
-      <option value="pepperoni">Pepperoni</option>
-      <option value="sausage">Sausage</option>
-      <option value="bacon">Bacon</option>
-      <option value="ham">Canadian Bacon</option>
-    </select>
-    <label for="combos">Combos</label>
-    <select id="combos">
-      <option value="pineapple">Pineapple</option>
-      <option value="mushrooms">Mushrooms</option>
-      <option value="onions">Onions</option>
-      <option value="olives">Olives</option>
-      <option value="extra-cheese">Extra Cheese</option>
-    </select>
-    <label for="quantity">Quantity</label>
-    <input type="number" id="quantity" min="1" max="10" value="1">
+    <div id="meats">
+      <label for="meats">Meats</label>
+      <input type="checkbox" id="pepperoni" name="topping" value="pepperoni">
+      <label for="pepperoni">Pepperoni</label>
+      <input type="checkbox" id="sausage" name="topping" value="sausage">
+      <label for="sausage">Sausage</label>
+      <input type="checkbox" id="bacon" name="topping" value="bacon">
+      <label for="bacon">Bacon</label>
+      <input type="checkbox" id="ham" name="topping" value="ham">
+      <label for="ham">Canadian Bacon</label>
+    </div>
+    <div id="combos">
+      <label for="veggies">Veggies</label>
+      <input type="checkbox" id="pineapple" name="topping" value="pineapple">
+      <label for="pineapple">Pineapple</label>
+      <input type="checkbox" id="mushrooms" name="topping" value="mushrooms">
+      <label for="mushrooms">Mushrooms</label>
+      <input type="checkbox" id="onions" name="topping" value="onions">
+      <label for="onions">Onions</label>
+      <input type="checkbox" id="olives" name="topping" value="olives">
+      <label for="olives">Olives</label>
+      <input type="checkbox" id="extra-cheese" name="topping" value="extra-cheese">
+      <label for="extra-cheese">Extra Cheese</label>
+    </div>
+    <div id="quantity">
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" min="1" max="10" value="1">
+    </div>
     <button type="submit">Order</button>
-  </form>
+  </form>  
   <div id="order-summary">
     <h2>Order Summary</h2>
     <p id="order-size"></p>
