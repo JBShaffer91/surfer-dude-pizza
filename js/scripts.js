@@ -38,7 +38,7 @@ class PizzaOrder {
       toppingCost += toppingPrices[this.toppings[i]];
     }
 
-    const totalCost = (baseCost + toppingCost) * this.quantity;
+    const totalCost = (baseCost + toppingCost) * parseInt(this.quantity);
 
     return totalCost;
   }
@@ -81,10 +81,9 @@ window.onload = function() {
     const sizeValue = size.value;
     const crustValue = crust.value;
     const quantityValue = quantity.value;
-    const order = new PizzaOrder(sizeValue, crustValue, toppingsArray, quantityValue);
+    const order = new PizzaOrder(sizeValue, crustValue, toppingsArray, parseInt(quantityValue));
     const receipt = order.generateReceipt();
     orderSummary.innerHTML = receipt;
     orderSummary.style.display = "block";
   });
-  
 };
