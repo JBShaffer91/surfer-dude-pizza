@@ -78,9 +78,13 @@ window.onload = function() {
     event.preventDefault();
     const toppings = document.querySelectorAll('input[name="topping"]:checked');
     const toppingsArray = Array.from(toppings).map(topping => topping.value);
-    const order = new PizzaOrder(size.value, crust.value, toppingsArray, quantity.value);
+    const sizeValue = size.value;
+    const crustValue = crust.value;
+    const quantityValue = quantity.value;
+    const order = new PizzaOrder(sizeValue, crustValue, toppingsArray, quantityValue);
     const receipt = order.generateReceipt();
     orderSummary.innerHTML = receipt;
     orderSummary.style.display = "block";
   });
+  
 };
