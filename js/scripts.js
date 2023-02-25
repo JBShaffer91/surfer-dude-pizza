@@ -8,7 +8,6 @@ class PizzaOrder {
     this.quantity = quantity;
   }
   calculateCost(size, crust, toppings, quantity) {
-    // Define prices for different options
     const sizePrices = {
       small: 8,
       medium: 10,
@@ -64,4 +63,22 @@ class PizzaOrder {
     
     return receipt;
   }
-}  
+}
+
+// User Interface Logic
+
+const form = document.getElementById("pizza-form");
+const orderSummary = document.getElementById("order-summary");
+const size = document.getElementById("size");
+const crust = document.getElementById("crust");
+const toppings = document.querySelectorAll('input[name="topping"]:checked');
+const quantity = document.getElementById("quantity");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const order = new Order(size.value, crust.value, toppings, quantity.value);
+  const cost = order.calculateCost();
+  const receipt = order.generateReceipt(cost);
+  orderSummary.innerHTML = receipt;
+  orderSummary.style.display = "block";
+});
