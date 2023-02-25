@@ -1,5 +1,4 @@
-// Buisness Logic
-
+// Business Logic
 class PizzaOrder {
   constructor(size, crust, toppings, quantity) {
     this.size = size;
@@ -7,7 +6,8 @@ class PizzaOrder {
     this.toppings = toppings;
     this.quantity = quantity;
   }
-  calculateCost(size, crust, toppings, quantity) {
+
+  calculateCost() {
     const sizePrices = {
       small: 8,
       medium: 10,
@@ -29,28 +29,29 @@ class PizzaOrder {
       olives: 0.5,
       "extra-cheese": 1
     };
-  
-    let baseCost = sizePrices[size];
-    baseCost += crustPrices[crust];
-  
+
+    let baseCost = sizePrices[this.size];
+    baseCost += crustPrices[this.crust];
+
     let toppingCost = 0;
-    for (let i = 0; i < toppings.length; i++) {
-      toppingCost += toppingPrices[toppings[i]];
+    for (let i = 0; i < this.toppings.length; i++) {
+      toppingCost += toppingPrices[this.toppings[i]];
     }
-  
-    const totalCost = (baseCost + toppingCost) * quantity;
-  
+
+    const totalCost = (baseCost + toppingCost) * this.quantity;
+
     return totalCost;
   }
-  generateReceipt(order) {
-    const size = order.getSize();
-    const crust = order.getCrust();
-    const toppings = order.getToppings();
-    const quantity = order.getQuantity();
-    const total = order.calculateCost();
-    
+
+  generateReceipt() {
+    const size = this.size;
+    const crust = this.crust;
+    const toppings = this.toppings;
+    const quantity = this.quantity;
+    const total = this.calculateCost();
+
     const toppingsList = toppings.map(topping => `<li>${topping}</li>`).join('');
-  
+
     const receipt = `
       <h2>Order Receipt</h2>
       <p><strong>Size:</strong> ${size}</p>
@@ -60,25 +61,26 @@ class PizzaOrder {
       <p><strong>Quantity:</strong> ${quantity}</p>
       <p><strong>Total Cost:</strong> $${total.toFixed(2)}</p>
     `;
-    
+
     return receipt;
   }
 }
 
 // User Interface Logic
+window.onload = function() {
+  const form = document.getElementById("pizza-form");
+  const orderSummary = document.getElementById("order-summary");
+  const size = document.getElementById("size");
+  const crust = document.getElementById("crust");
+  const quantity = document.getElementById("quantity");
 
-const form = document.getElementById("pizza-form");
-const orderSummary = document.getElementById("order-summary");
-const size = document.getElementById("size");
-const crust = document.getElementById("crust");
-const toppings = document.querySelectorAll('input[name="topping"]:checked');
-const quantity = document.getElementById("quantity");
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const order = new Order(size.value, crust.value, toppings, quantity.value);
-  const cost = order.calculateCost();
-  const receipt = order.generateReceipt(cost);
-  orderSummary.innerHTML = receipt;
-  orderSummary.style.display = "block";
-});
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const toppings = document.querySelectorAll('input[name="topping"]:checked');
+    const toppingsArray = Array.from(toppings).map(topping => topping.value);
+    const order = new PizzaOrder(size.value, crust.value, toppingsArray, quantity.value);
+    const receipt = order.generateReceipt();
+    orderSummary.innerHTML = receipt;
+    orderSummary.style.display = "block";
+  });
+};
