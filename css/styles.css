@@ -76,4 +76,5 @@ button[type="submit"] {
   border: 2px solid #ccc;
   box-sizing:border-box;
   box-shadow: 0 0 5px #ccc;
+  text-align: center;
 }
